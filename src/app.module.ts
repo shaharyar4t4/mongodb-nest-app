@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { Mongoose } from 'mongoose';
 import { MongooseModule } from '@nestjs/mongoose';
+import { StudentModule } from './student/student.module';
 
 @Module({
   imports: [
@@ -11,7 +12,8 @@ import { MongooseModule } from '@nestjs/mongoose';
    // this below line for config it help to access the data which is mention of .evn file
    ConfigModule.forRoot(),
    // this below line is help to implemented the mongoose (mongo db) in whole project
-   MongooseModule.forRoot(process.env.MONGO_URI!)
+   MongooseModule.forRoot(process.env.MONGO_URI!),
+   StudentModule
   ],
 
   controllers: [AppController],
