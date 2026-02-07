@@ -38,6 +38,20 @@ export class StudentService {
   
   // Put Method is help to update the data..
   async updateStudent(id: string, data: Partial<Student>): Promise<Student | null>{
+    // the new keyword is refer the "update data"....
+    // the below is not recommand as per the backennd Logic beacuse the data is updated particaly 
+    //return this.StudentModel.findByIdAndUpdate(id, data, {new: true}).exec();
+    // the actual way to update whole data...
+    const updated = await this.StudentModel.findByIdAndUpdate(id,{
+      name: data.name ?? null,
+      age: data.age ?? null,
+      email: data.email ??  null,
+    }, { overwrite: true, new: true});
+    return updated;
+  }
+
+  // Patch method is help to update specfic field data in DB
+  async patchStudent(id: string, data: Partial<Student>): Promise<Student | null>{
     return this.StudentModel.findByIdAndUpdate(id, data, {new: true}).exec();
   }
 }

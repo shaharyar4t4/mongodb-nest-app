@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { StudentService } from './student.service';
 import { Student } from './student.schema';
 
@@ -13,21 +13,27 @@ export class StudentController {
         return this.studentService.createStudent(data);
     }
 
-    // this is get controller which is help to fetch All data... 
+    // this is GET controller which is help to fetch All data... 
     @Get()
     async getStudent(){
         return this.studentService.getAllStudent();
     }
 
-    // this is get  by ID controller which is help to fetch data by using ID 
+    // this is GET  by ID controller which is help to fetch data by using ID 
     @Get(':id')
     async getStudentbyId(@Param('id') id: string){
         return this.studentService.getStudentbyId(id);
     }
-    
-   // this is Put method which is helps to update data...
+
+   // this is PUT method which is helps to update data...
     @Put(':id')
-    async updatestudent(@Param('id') id: string, @Body() data: Partial<Student>){
+    async putstudent(@Param('id') id: string, @Body() data: Partial<Student>){
         return this.studentService.updateStudent(id, data);
+    }
+
+    // this is PATCH method is help to update the specfic field in db..
+    @Patch(':id')
+    async patchstudent(@Param('id') id: string, @Body() data: Partial<Student>){
+        return this.studentService.patchStudent(id, data);
     }
 }
