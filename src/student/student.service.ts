@@ -35,5 +35,9 @@ export class StudentService {
     // the findByID() is help to get specfic data from data base...
     return this.StudentModel.findById(id).exec();
   }
-
+  
+  // Put Method is help to update the data..
+  async updateStudent(id: string, data: Partial<Student>): Promise<Student | null>{
+    return this.StudentModel.findByIdAndUpdate(id, data, {new: true}).exec();
+  }
 }
