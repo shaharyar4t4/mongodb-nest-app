@@ -23,7 +23,7 @@ export class StudentService {
 
   // GET method (Get the data on DB)
   //Promise is show that the data is geted... but your another will be continous..
-  async getAllStudent(): Promise<Student[]>{
+  async getAllStudent(): Promise<Student[]> {
     // the find() is help to get data from data base...
     // exec is help to fetch data with easliy...
     return this.StudentModel.find().exec();
@@ -31,27 +31,42 @@ export class StudentService {
 
   // GET method (Get the data on DB)
   // the method help to fetch data by using specfic id...
-  async getStudentbyId(id: string): Promise<Student | null>{
+  async getStudentbyId(id: string): Promise<Student | null> {
     // the findByID() is help to get specfic data from data base...
     return this.StudentModel.findById(id).exec();
   }
-  
+
   // Put Method is help to update the data..
-  async updateStudent(id: string, data: Partial<Student>): Promise<Student | null>{
+  async updateStudent(id: string, data: Partial<Student>): Promise<Student | null> {
     // the new keyword is refer the "update data"....
     // the below is not recommand as per the backennd Logic beacuse the data is updated particaly 
     //return this.StudentModel.findByIdAndUpdate(id, data, {new: true}).exec();
     // the actual way to update whole data...
-    const updated = await this.StudentModel.findByIdAndUpdate(id,{
+    const updated = await this.StudentModel.findByIdAndUpdate(id, {
       name: data.name ?? null,
       age: data.age ?? null,
-      email: data.email ??  null,
-    }, { overwrite: true, new: true});
+      email: data.email ?? null,
+    }, { overwrite: true, new: true });
     return updated;
   }
 
   // Patch method is help to update specfic field data in DB
-  async patchStudent(id: string, data: Partial<Student>): Promise<Student | null>{
-    return this.StudentModel.findByIdAndUpdate(id, data, {new: true}).exec();
+  async patchStudent(id: string, data: Partial<Student>): Promise<Student | null> {
+    return this.StudentModel.findByIdAndUpdate(id, data, { new: true }).exec();
   }
+
+  // Delete method is help to delete the data from DB
+  // async deleteStudent(id: string): Promise<Student | null>{
+  //   return this.StudentModel.findByIdAndDelete(id).exec();
+  // }
+  async deleteStudent(id: string): Promise<string> {
+    const deletedStudent = await this.StudentModel.findByIdAndDelete(id).exec();
+
+    if (!deletedStudent) {
+      return 'Student not found';
+    }
+
+    return 'Your data is deleted successfully';
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { StudentService } from './student.service';
 import { Student } from './student.schema';
 
@@ -35,5 +35,11 @@ export class StudentController {
     @Patch(':id')
     async patchstudent(@Param('id') id: string, @Body() data: Partial<Student>){
         return this.studentService.patchStudent(id, data);
+    }
+
+    // this is DELETE method is help to delete the from DB
+    @Delete(':id')
+    async deleteStudents(@Param('id') id: string){
+        return this.studentService.deleteStudent(id);
     }
 }
