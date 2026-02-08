@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { Mongoose } from 'mongoose';
 import { MongooseModule } from '@nestjs/mongoose';
 import { StudentModule } from './student/student.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { StudentModule } from './student/student.module';
    ConfigModule.forRoot(),
    // this below line is help to implemented the mongoose (mongo db) in whole project
    MongooseModule.forRoot(process.env.MONGO_URI!),
-   StudentModule
+   StudentModule,
+   UserModule
   ],
 
   controllers: [AppController],
