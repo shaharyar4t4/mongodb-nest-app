@@ -13,7 +13,7 @@ export class Project extends Document {
     title: string;
 
     @Prop({ type: [{ type: Types.ObjectId, ref: 'Developer' }] })
-    Developer: Types.ObjectId;
+    developers: Types.ObjectId;//  jo hum 'project' populate kiya under add wo yehe se call hota ha 
 }
 
 export const projectSchema = SchemaFactory.createForClass(Project);

@@ -35,7 +35,7 @@ export class ProjectService {
                 
                 name: 'Sameer',
                 // developer is asign to project project_A or project_B
-                projects: [projectA._id, projectB._id]
+                projects: [projectA._id]
 
             })
         ])
@@ -45,7 +45,7 @@ export class ProjectService {
                 $set:{developers: [dev1._id, dev2._id]}
             }),
             this.projectModel.findByIdAndUpdate(projectB._id,{
-                $set:{developers: [dev2._id]}
+                $set:{developers: [dev1._id]}
             })
         ])
         return {dev1, dev2};
