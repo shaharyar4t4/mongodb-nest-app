@@ -10,7 +10,7 @@ export class Product extends Document {
     @Prop()
     title: string;
 
-    // Me na Prop kiya under me tag is define kiya ha... q kiya one to many ka relationship ha 
+    // Me na Prop kiya under me tag is define kiya ha... q kiya one to many ka relationship ha by using (Embdeding method)
     @Prop({ type: [Tag] })
     tags: Tag[];
 
