@@ -33,6 +33,6 @@ export class LibraryService {
 
     // this method help to fetch the detials....
     async findAlllibrarydetial(): Promise<Library[]>{
-        return this.LibreryModel.find().populate('book').exec();
+        return this.LibreryModel.find().populate('books').exec();
     }
 }
