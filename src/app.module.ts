@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { EmployeeModule } from './employee/employee.module';
 import { ProductModule } from './product/product.module';
 import { LibraryModule } from './library/library.module';
+import { ProjectModule } from './project/project.module';
 
 @Module({
   imports: [
@@ -20,7 +21,8 @@ import { LibraryModule } from './library/library.module';
    UserModule,
    EmployeeModule,
    ProductModule,
-   LibraryModule
+   LibraryModule,
+   ProjectModule
   ],
 
   controllers: [AppController],
