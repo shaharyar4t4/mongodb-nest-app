@@ -33,7 +33,7 @@ constructor(
     // here we the Populate --> Means --> important question
     // let suppose hum populate use nhi karta ha tu hota ha ye humraha pass only ye data aaya ga like {'name: shaharyar', 'profile _id'}
     // or jab hum na populate use kiya tu humraha pass ye data aaya ga like {'name: shaharyar', 'profile: {age: 20, qualification: 'Bachelor'}'} means complete data show hoga 
-    return this.employeeModel.find().populate('profile').exec();
+    return this.employeeModel.find().populate('profile') ;
  }
 
 }
